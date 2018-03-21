@@ -54,6 +54,10 @@ Or you can import the CSS:
 - `acceptedCards` {array}: If you want to limit the accepted cards. (e.g. `['visa', 'mastercard']`
 - `callback` {func}: A callback function that will be called when the card number has changed with 2 paramaters: `type ({ issuer: 'visa', maxLength: 19 }), isValid ({boolean})`
 
+## Methods
+
+- `setCardType` {string}: update card `preview` only, with a new valid type.
+
 \* *Required fields*
 
 
