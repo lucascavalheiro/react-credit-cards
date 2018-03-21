@@ -156,6 +156,29 @@ class ReactCreditCards extends React.Component {
     return `${month}/${year}`;
   }
 
+  /**
+   * Method that allow the card's type be changed even if the Payment lib return a different type
+   * @param {string} type issuer name (e.g.: 'visa', 'mastercard', 'amex', etc...)
+   */
+  setCardType(type) {
+    const acceptedCards = Payment.getCardArray() || [];
+
+    acceptedCards.every(card => {
+      if (card && card.type === type) {
+        const typeState = {
+          issuer: type,
+          maxLength: this.state.type.maxLength,
+        };
+
+        this.setState({
+          type: typeState,
+        });
+        return false;
+      }
+      return true;
+    });
+  }
+
   setCards(props = this.props) {
     const { acceptedCards } = props;
     let newCardArray = [];
