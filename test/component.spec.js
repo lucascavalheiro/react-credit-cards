@@ -118,17 +118,17 @@ describe('ReactCreditCards', () => {
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
-  it('should handle new number props (Discover)', () => {
+  it('should handle new number props (Hipercard)', () => {
     wrapper.setProps({
       number: '6011111111111117',
       focused: 'number',
     });
 
-    expect(wrapper.find('.rccs__card').hasClass('rccs__card--discover')).toBe(true);
+    expect(wrapper.find('.rccs__card').hasClass('rccs__card--hipercard')).toBe(true);
     expect(wrapper.find('.rccs__number').text()).toBe('6011 1111 1111 1117');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'discover' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'hipercard' });
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
@@ -174,31 +174,31 @@ describe('ReactCreditCards', () => {
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
-  it('should handle new number props (Laser)', () => {
+  it('should handle new number props (Hipercard)', () => {
     wrapper.setProps({
       number: '6709359636227382',
       focused: 'number',
     });
 
-    expect(wrapper.find('.rccs__card').hasClass('rccs__card--laser')).toBe(true);
+    expect(wrapper.find('.rccs__card').hasClass('rccs__card--hipercard')).toBe(true);
     expect(wrapper.find('.rccs__number').text()).toBe('6709 3596 3622 7382');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'laser' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'hipercard' });
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
-  it('should handle new number props (Maestro)', () => {
+  it('should handle new number props (Hipercard)', () => {
     wrapper.setProps({
       number: '6304414232839699',
       focused: 'number',
     });
 
-    expect(wrapper.find('.rccs__card').hasClass('rccs__card--maestro')).toBe(true);
+    expect(wrapper.find('.rccs__card').hasClass('rccs__card--hipercard')).toBe(true);
     expect(wrapper.find('.rccs__number').text()).toBe('6304 4142 3283 9699');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'maestro' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'hipercard' });
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
@@ -216,17 +216,17 @@ describe('ReactCreditCards', () => {
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
-  it('should handle new number props (Unionpay)', () => {
+  it('should handle new number props (Hipercard)', () => {
     wrapper.setProps({
       number: '6240008631401148',
       focused: 'number',
     });
 
-    expect(wrapper.find('.rccs__card').hasClass('rccs__card--unionpay')).toBe(true);
+    expect(wrapper.find('.rccs__card').hasClass('rccs__card--hipercard')).toBe(true);
     expect(wrapper.find('.rccs__number').text()).toBe('6240 0086 3140 1148');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'unionpay' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'hipercard' });
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
@@ -258,17 +258,17 @@ describe('ReactCreditCards', () => {
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
-  it('should handle new number props (VisaElectron)', () => {
+  it('should handle new number props (Visa)', () => {
     wrapper.setProps({
       number: '4508269706217171',
       focused: 'number',
     });
 
-    expect(wrapper.find('.rccs__card').hasClass('rccs__card--visaelectron')).toBe(true);
+    expect(wrapper.find('.rccs__card').hasClass('rccs__card--visa')).toBe(true);
     expect(wrapper.find('.rccs__number').text()).toBe('4508 2697 0621 7171');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'visaelectron' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'visa' });
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
@@ -326,7 +326,7 @@ describe('ReactCreditCards', () => {
 
   it('should handle empty expiry props', () => {
     wrapper.setProps({
-      expiry: undefined,
+      expiry: '',
       focused: 'expiry',
     });
 
