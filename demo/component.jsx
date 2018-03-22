@@ -17,7 +17,7 @@ export default class Demo extends React.Component {
   }
 
   componentDidMount() {
-    //Payment.formatCardNumber(document.querySelector('[name="number"]'));
+    Payment.formatCardNumber(document.querySelector('[name="number"]'));
     Payment.formatCardExpiry(document.querySelector('[name="expiry"]'));
     Payment.formatCardCVC(document.querySelector('[name="cvc"]'));
   }
