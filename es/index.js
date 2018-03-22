@@ -34,17 +34,24 @@ var ReactCreditCards = function (_React$Component) {
   _createClass(ReactCreditCards, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      var number = this.props.number;
+      var _props = this.props,
+          number = _props.number,
+          formatNumber = _props.formatNumber,
+          numberInputName = _props.numberInputName;
 
+
+      if (formatNumber && numberInputName) {
+        Payment.formatCardNumber(document.querySelector('[name="' + numberInputName + '"]'));
+      }
 
       this.updateType(number);
     }
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      var _props = this.props,
-          acceptedCards = _props.acceptedCards,
-          number = _props.number;
+      var _props2 = this.props,
+          acceptedCards = _props2.acceptedCards,
+          number = _props2.number;
       var nextAcceptedCards = nextProps.acceptedCards,
           nextNumber = nextProps.number;
 
@@ -110,16 +117,17 @@ var ReactCreditCards = function (_React$Component) {
     value: function updateType(number) {
       var callback = this.props.callback;
 
-      var type = Payment.fns.cardType(number) || 'unknown';
+      var cardInfo = Payment.fns.cardInfo(number) || {};
+
+      var _ref = cardInfo || {},
+          _ref$type = _ref.type,
+          type = _ref$type === undefined ? 'unknow' : _ref$type,
+          _ref$length = _ref.length,
+          maxLengthList = _ref$length === undefined ? [] : _ref$length;
 
       var maxLength = 16;
-
-      if (type === 'amex') {
-        maxLength = 15;
-      } else if (type === 'dinersclub') {
-        maxLength = 14;
-      } else if (['hipercard', 'mastercard', 'visa'].indexOf(type) !== -1) {
-        maxLength = 19;
+      if (maxLengthList.length && maxLengthList[maxLengthList.length - 1]) {
+        maxLength = maxLengthList[maxLengthList.length - 1];
       }
 
       var typeState = {
@@ -140,12 +148,12 @@ var ReactCreditCards = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _props2 = this.props,
-          cvc = _props2.cvc,
-          focused = _props2.focused,
-          locale = _props2.locale,
-          name = _props2.name,
-          placeholders = _props2.placeholders;
+      var _props3 = this.props,
+          cvc = _props3.cvc,
+          focused = _props3.focused,
+          locale = _props3.locale,
+          name = _props3.name,
+          placeholders = _props3.placeholders;
       var number = this.number,
           expiry = this.expiry;
 
@@ -224,9 +232,9 @@ var ReactCreditCards = function (_React$Component) {
     key: 'issuer',
     get: function get() {
       var type = this.state.type;
-      var _props3 = this.props,
-          issuer = _props3.issuer,
-          preview = _props3.preview;
+      var _props4 = this.props,
+          issuer = _props4.issuer,
+          preview = _props4.preview;
 
 
       return preview && issuer ? issuer.toLowerCase() : type.issuer;
@@ -235,9 +243,9 @@ var ReactCreditCards = function (_React$Component) {
     key: 'number',
     get: function get() {
       var type = this.state.type;
-      var _props4 = this.props,
-          number = _props4.number,
-          preview = _props4.preview;
+      var _props5 = this.props,
+          number = _props5.number,
+          preview = _props5.preview;
 
 
       var maxLength = preview ? 19 : type.maxLength;
@@ -274,6 +282,7 @@ var ReactCreditCards = function (_React$Component) {
         }
       }
 
+      console.log(nextNumber);
       return nextNumber;
     }
   }, {
@@ -332,7 +341,9 @@ ReactCreditCards.propTypes = {
   placeholders: PropTypes.shape({
     name: PropTypes.string
   }),
-  preview: PropTypes.bool
+  preview: PropTypes.bool,
+  formatNumber: PropTypes.bool,
+  numberInputName: PropTypes.string
 };
 ReactCreditCards.defaultProps = {
   acceptedCards: [],

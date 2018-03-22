@@ -128,7 +128,7 @@ describe('ReactCreditCards', () => {
     expect(wrapper.find('.rccs__number').text()).toBe('6011 1111 1111 1117');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'hipercard' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'hipercard' });
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
@@ -184,7 +184,7 @@ describe('ReactCreditCards', () => {
     expect(wrapper.find('.rccs__number').text()).toBe('6709 3596 3622 7382');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'hipercard' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'hipercard' });
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
@@ -198,7 +198,7 @@ describe('ReactCreditCards', () => {
     expect(wrapper.find('.rccs__number').text()).toBe('6304 4142 3283 9699');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'hipercard' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'hipercard' });
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
@@ -226,7 +226,7 @@ describe('ReactCreditCards', () => {
     expect(wrapper.find('.rccs__number').text()).toBe('6240 0086 3140 1148');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'hipercard' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'hipercard' });
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 

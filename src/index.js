@@ -41,6 +41,8 @@ class ReactCreditCards extends React.Component {
       name: PropTypes.string,
     }),
     preview: PropTypes.bool,
+    formatNumber: PropTypes.bool,
+    numberInputName: PropTypes.string,
   };
 
   static defaultProps = {
@@ -55,7 +57,11 @@ class ReactCreditCards extends React.Component {
   };
 
   componentDidMount() {
-    const { number } = this.props;
+    const { number, formatNumber, numberInputName } = this.props;
+
+    if (formatNumber && numberInputName) {
+      Payment.formatCardNumber(document.querySelector(`[name="${numberInputName}"]`));
+    }
 
     this.updateType(number);
   }
@@ -124,6 +130,7 @@ class ReactCreditCards extends React.Component {
       }
     }
 
+    console.log(nextNumber);
     return nextNumber;
   }
 
@@ -200,18 +207,12 @@ class ReactCreditCards extends React.Component {
 
   updateType(number) {
     const { callback } = this.props;
-    const type = Payment.fns.cardType(number) || 'unknown';
+    const cardInfo = Payment.fns.cardInfo(number) || {};
+    const { type = 'unknown', length: maxLengthList = [] } = cardInfo || {};
 
     let maxLength = 16;
-
-    if (type === 'amex') {
-      maxLength = 15;
-    }
-    else if (type === 'dinersclub') {
-      maxLength = 14;
-    }
-    else if (['hipercard', 'mastercard', 'visa'].includes(type)) {
-      maxLength = 19;
+    if (maxLengthList.length && maxLengthList[maxLengthList.length - 1]) {
+      maxLength = maxLengthList[maxLengthList.length - 1];
     }
 
     const typeState = {

@@ -53,6 +53,8 @@ Or you can import the CSS:
 - `issuer` {string}: Set the issuer for the `preview` mode (e.g. `visa|mastercard|...`)
 - `acceptedCards` {array}: If you want to limit the accepted cards. (e.g. `['visa', 'mastercard']`
 - `callback` {func}: A callback function that will be called when the card number has changed with 2 paramaters: `type ({ issuer: 'visa', maxLength: 19 }), isValid ({boolean})`
+- `formatNumber` {bool}: Should apply mask to a custom input
+- `numberInputName` {string}: Input name to apply card number mask
 
 ## Methods
 
