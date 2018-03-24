@@ -212,7 +212,7 @@ describe('ReactCreditCards', () => {
     expect(wrapper.find('.rccs__number').text()).toBe('5105 1051 0510 5100');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'mastercard' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'mastercard' });
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
@@ -240,21 +240,21 @@ describe('ReactCreditCards', () => {
     expect(wrapper.find('.rccs__number').text()).toBe('4012 8888 8888 1881');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'visa' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'visa' });
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
-  it('should handle new number props (Visa with 19 digits)', () => {
+  it('should handle new number props (Visa with 16 digits)', () => {
     wrapper.setProps({
-      number: '4111111111111111342',
+      number: '4111111111111111',
       focused: 'number',
     });
 
     expect(wrapper.find('.rccs__card').hasClass('rccs__card--visa')).toBe(true);
-    expect(wrapper.find('.rccs__number').text()).toBe('4111 1111 1111 1111342');
+    expect(wrapper.find('.rccs__number').text()).toBe('4111 1111 1111 1111');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'visa' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'visa' });
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
@@ -268,21 +268,21 @@ describe('ReactCreditCards', () => {
     expect(wrapper.find('.rccs__number').text()).toBe('4508 2697 0621 7171');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'visa' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'visa' });
     expect(mockCallback.mock.calls[0][1]).toEqual(true);
   });
 
   it('should handle new number props with extra digits', () => {
     wrapper.setProps({
-      number: '5512888888881881000000',
+      number: '5512888888881881000',
       focused: 'number',
     });
 
     expect(wrapper.find('.rccs__card').hasClass('rccs__card--mastercard')).toBe(true);
-    expect(wrapper.find('.rccs__number').text()).toBe('5512 8888 8888 1881000');
+    expect(wrapper.find('.rccs__number').text()).toBe('5512 8888 8888 1881');
     expect(wrapper.find('.rccs__number').hasClass('rccs--focused')).toBe(true);
 
-    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 19, issuer: 'mastercard' });
+    expect(mockCallback.mock.calls[0][0]).toEqual({ maxLength: 16, issuer: 'mastercard' });
     expect(mockCallback.mock.calls[0][1]).toEqual(false);
   });
 
