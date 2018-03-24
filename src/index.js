@@ -28,6 +28,7 @@ class ReactCreditCards extends React.Component {
       PropTypes.number,
     ]).isRequired,
     focused: PropTypes.string,
+    formatNumber: PropTypes.bool,
     issuer: PropTypes.string,
     locale: PropTypes.shape({
       valid: PropTypes.string,
@@ -37,12 +38,11 @@ class ReactCreditCards extends React.Component {
       PropTypes.string,
       PropTypes.number,
     ]).isRequired,
+    numberInputName: PropTypes.string,
     placeholders: PropTypes.shape({
       name: PropTypes.string,
     }),
     preview: PropTypes.bool,
-    formatNumber: PropTypes.bool,
-    numberInputName: PropTypes.string,
   };
 
   static defaultProps = {
@@ -130,7 +130,6 @@ class ReactCreditCards extends React.Component {
       }
     }
 
-    console.log(nextNumber);
     return nextNumber;
   }
 
